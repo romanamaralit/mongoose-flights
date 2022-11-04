@@ -13,7 +13,10 @@ module.exports = {
   function create(req, res) {
     const flight = new Flight(req.body);
     flight.save(function(err) {
-      if (err) return res.redirect('/flights/new');
+      if (err) {
+        console.log(err)
+        return res.redirect('/flights/new');
+      }
       console.log(flight);
       res.redirect('/flights');
     });
