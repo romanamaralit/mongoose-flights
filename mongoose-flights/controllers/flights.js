@@ -2,7 +2,8 @@ const Flight = require('../models/flight');
 
 module.exports = {
     new: newFlight,
-    create
+    create,
+    index
   };
 
   function newFlight(req,res){
@@ -14,6 +15,17 @@ module.exports = {
     flight.save(function(err) {
       if (err) return res.redirect('/flights/new');
       console.log(flight);
-      res.redirect('/flights/new');
+      res.redirect('/flights');
+    });
+  }
+
+  function index(req,res) {
+    //movies refers to found Movie documents in MondoDB
+    Flight.find({}, function(err, flights){
+        if (err) {
+            console.log(err);
+            res.redirect("/");
+        }
+        res.render('flights/index', {flights});
     });
   }
