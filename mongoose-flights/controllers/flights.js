@@ -20,7 +20,6 @@ module.exports = {
   }
 
   function index(req,res) {
-    //movies refers to found Movie documents in MondoDB
     Flight.find({}, function(err, flights){
         if (err) {
             console.log(err);

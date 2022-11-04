@@ -3,10 +3,8 @@ const Schema = mongoose.Schema
 
 const flightSchema = new Schema({
   airline: String,
+  flightNo: Number,
   airport: String,
-  flightNo: {
-    type: Number,
-    required: true},
   departs: Date,
 },
 {
